@@ -41,7 +41,7 @@ Todas as informações são de preenchimento obrigatório, exceto o complemento 
 
 ### Requisito 6 - O sistema deve possuir uma funcionalidade de listagem de pacientes, na qual as informações, de cada um dos pacientes cadastrados, deverão ser exibidas:
 
-A listagem deve ser ordenada pelo nome do paciente, de maneira crescente, bem como ser paginada, trazendo 10 registros por página.
+A listagem deve ser ordenada pelo nome do paciente, de maneira crescente, bem como ser paginada, trazendo 10 registros por página. E na listagem individual deve ser apresentada todas as suas consultas. 
 
 ### Requisito 7 - O sistema deve possuir uma funcionalidade de atualização de dados cadastrais de pacientes, na qual as seguintes informações poderão ser atualizadas:
 * Nome
