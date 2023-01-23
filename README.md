@@ -1,4 +1,4 @@
-# CliniCenter
+# VollMed API
 Este projeto é uma API REST em Spring Boot para gerenciar consultas médicas.
 
 ## Requisitos
