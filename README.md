@@ -1,5 +1,5 @@
 # CliniCenter
-Este projeto consiste em criar uma API REST em diferentes tecnologias para gerenciar consultas médicas.
+Este projeto consiste em criar uma API REST em Spring Boot para gerenciar consultas médicas.
 
 ### Requisito 1 - O sistema deve possuir uma funcionalidade de cadastro de médicos, na qual as seguintes informações deverão ser preenchidas:
 * Nome
