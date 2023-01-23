@@ -1,0 +1,1 @@
+alter table tab_medico add column telefone varchar(20) not null;
