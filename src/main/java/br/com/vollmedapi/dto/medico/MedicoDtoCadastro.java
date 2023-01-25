@@ -1,13 +1,12 @@
 package br.com.vollmedapi.dto.medico;
 
-import org.hibernate.validator.constraints.Length;
-
 import br.com.vollmedapi.dto.endereco.EnderecoDtoCadastro;
 import br.com.vollmedapi.enumarations.EspecialidadeEnumaration;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 public record MedicoDtoCadastro(
 		
@@ -19,7 +18,7 @@ public record MedicoDtoCadastro(
 		@NotBlank(message = "Email deve ser informado!")
 		String email,
 		@NotBlank(message = "CRM deve ser informado!")
-		@Length(min = 1, max = 6)
+		@Pattern(regexp = "\\d{4,6}")
 		String crm,
 		@NotNull(message = "Especialidade não pode estar em branco")
 		EspecialidadeEnumaration especialidade,

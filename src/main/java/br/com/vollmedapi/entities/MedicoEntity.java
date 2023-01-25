@@ -1,5 +1,6 @@
 package br.com.vollmedapi.entities;
 
+import br.com.vollmedapi.dto.medico.MedicoDtoAtualizacao;
 import br.com.vollmedapi.dto.medico.MedicoDtoCadastro;
 import br.com.vollmedapi.enumarations.EspecialidadeEnumaration;
 import br.com.vollmedapi.models.Endereco;
@@ -12,12 +13,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "Medicos")
@@ -45,5 +44,18 @@ public class MedicoEntity {
 		this.especialidade = medicoDtoCadastro.especialidade();
 		this.endereco = new Endereco(medicoDtoCadastro.endereco());
 	}
+	
+	public void atualizar(MedicoDtoAtualizacao medicoDtoAtualizacao) {
+		if(medicoDtoAtualizacao.nome() != null) {
+			this.nome = medicoDtoAtualizacao.nome();
+		}
+		if(medicoDtoAtualizacao.telefone() != null) {
+			this.telefone = medicoDtoAtualizacao.telefone();
+		}
+		if(medicoDtoAtualizacao.endereco() != null) {
+			this.endereco.atualizar(medicoDtoAtualizacao.endereco());
+		}
+	}
+	
 	
 }

@@ -1,8 +1,11 @@
 package br.com.vollmedapi.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import br.com.vollmedapi.dto.medico.MedicoDtoAtualizacao;
 import br.com.vollmedapi.entities.MedicoEntity;
 import br.com.vollmedapi.repositories.MedicoRepository;
 
@@ -16,20 +19,24 @@ public class MedicoService {
 		return medicoRepository.save(medico);
 	}
 	
-	public void excluir() {
-		
+	public MedicoEntity excluir(Long id) {
+		MedicoEntity medico = medicoRepository.getReferenceById(id);
+		medicoRepository.delete(medico);
+		return null;
 	}
 	
-	public void atualizar() {
-		
+	public MedicoEntity atualizar(Long id, MedicoDtoAtualizacao medicoDtoAtualizacao) {
+		MedicoEntity medico = medicoRepository.getReferenceById(id);
+		medico.atualizar(medicoDtoAtualizacao);
+		return medico;
 	}
 	
-	public void listar() {
-		
+	public Page<MedicoEntity> listar(Pageable paginacao) {
+		return medicoRepository.findAll(paginacao);
 	}
 	
-	public void listarPorId() {
-		
+	public MedicoEntity listarPorId(Long id) {
+		return medicoRepository.getReferenceById(id);
 	}
 
 }
