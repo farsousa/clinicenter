@@ -1,4 +1,4 @@
-package br.com.vollmedapi.dto.endereco;
+package br.com.vollmedapi.dtos.endereco;
 
 import org.hibernate.validator.constraints.Length;
 

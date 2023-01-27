@@ -1,4 +1,4 @@
-package br.com.vollmedapi.enumarations;
+package br.com.vollmedapi.domains.enumarations;
 
 public enum EspecialidadeEnumaration {
 	

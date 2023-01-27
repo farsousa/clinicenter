@@ -1,9 +1,9 @@
-package br.com.vollmedapi.entities;
+package br.com.vollmedapi.domains.entities;
 
-import br.com.vollmedapi.dto.medico.MedicoDtoAtualizacao;
-import br.com.vollmedapi.dto.medico.MedicoDtoCadastro;
-import br.com.vollmedapi.enumarations.EspecialidadeEnumaration;
-import br.com.vollmedapi.models.Endereco;
+import br.com.vollmedapi.domains.enumarations.EspecialidadeEnumaration;
+import br.com.vollmedapi.domains.models.Endereco;
+import br.com.vollmedapi.dtos.medico.MedicoDtoAtualizacao;
+import br.com.vollmedapi.dtos.medico.MedicoDtoCadastro;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

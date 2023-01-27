@@ -1,15 +1,11 @@
-package br.com.vollmedapi.models;
+package br.com.vollmedapi.domains.models;
 
-import br.com.vollmedapi.dto.endereco.EnderecoDtoAtualizacao;
-import br.com.vollmedapi.dto.endereco.EnderecoDtoCadastro;
-import br.com.vollmedapi.entities.MedicoEntity;
-import br.com.vollmedapi.enumarations.EspecialidadeEnumaration;
+import br.com.vollmedapi.dtos.endereco.EnderecoDtoAtualizacao;
+import br.com.vollmedapi.dtos.endereco.EnderecoDtoCadastro;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Data
 @AllArgsConstructor

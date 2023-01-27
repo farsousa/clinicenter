@@ -1,7 +1,7 @@
-package br.com.vollmedapi.dto.medico;
+package br.com.vollmedapi.dtos.medico;
 
-import br.com.vollmedapi.dto.endereco.EnderecoDtoCadastro;
-import br.com.vollmedapi.enumarations.EspecialidadeEnumaration;
+import br.com.vollmedapi.domains.enumarations.EspecialidadeEnumaration;
+import br.com.vollmedapi.dtos.endereco.EnderecoDtoCadastro;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -18,7 +18,7 @@ public record MedicoDtoCadastro(
 		@NotBlank(message = "Email deve ser informado!")
 		String email,
 		@NotBlank(message = "CRM deve ser informado!")
-		@Pattern(regexp = "\\d{4,6}")
+		@Pattern(regexp = "\\d{4,6}", message = "CRM deve ser apenas números e ter no mínimo 4 e no máximo 6 dígitos!")
 		String crm,
 		@NotNull(message = "Especialidade não pode estar em branco")
 		EspecialidadeEnumaration especialidade,

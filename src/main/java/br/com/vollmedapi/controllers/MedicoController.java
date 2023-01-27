@@ -1,5 +1,7 @@
 package br.com.vollmedapi.controllers;
 
+import java.net.URI;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,11 +15,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import br.com.vollmedapi.dto.medico.MedicoDtoAtualizacao;
-import br.com.vollmedapi.dto.medico.MedicoDtoCadastro;
-import br.com.vollmedapi.dto.medico.MedicoDtoListagem;
-import br.com.vollmedapi.dto.medico.MedicoDtoListagemIndividual;
-import br.com.vollmedapi.entities.MedicoEntity;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import br.com.vollmedapi.domains.entities.MedicoEntity;
+import br.com.vollmedapi.dtos.medico.MedicoDtoAtualizacao;
+import br.com.vollmedapi.dtos.medico.MedicoDtoCadastro;
+import br.com.vollmedapi.dtos.medico.MedicoDtoListagem;
+import br.com.vollmedapi.dtos.medico.MedicoDtoDetalhamento;
 import br.com.vollmedapi.services.MedicoService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -31,39 +35,39 @@ public class MedicoController {
 	
 	@PostMapping
 	@Transactional
-	public ResponseEntity<MedicoDtoListagemIndividual> cadastrar(
+	public ResponseEntity<MedicoDtoDetalhamento> cadastrar(
 			@RequestBody 
 			@Valid
-			MedicoDtoCadastro medicoDtoCadastro
+			MedicoDtoCadastro medicoDtoCadastro,
+			UriComponentsBuilder uriBuilder
 	) {
 		MedicoEntity medico = new MedicoEntity(medicoDtoCadastro);
-		
-		System.out.println(medico.toString());
 		medico = medicoService.cadastrar(medico);
-		return ResponseEntity.created(null).body(new MedicoDtoListagemIndividual(medico));
+		URI uri = uriBuilder.path("/medicos/{id}").buildAndExpand(medico.getId()).toUri();
+		return ResponseEntity.created(uri).body(new MedicoDtoDetalhamento(medico));
 	}
 	
 	@DeleteMapping("{id}")
 	@Transactional
-	public ResponseEntity<?> excluir(
+	public ResponseEntity<?> excluirPorId(
 			@PathVariable
 			Long id
 	) {
-		medicoService.excluir(id);
-		return ResponseEntity.ok().body(null);
+		medicoService.excluirPorId(id);
+		return ResponseEntity.noContent().build();
 	}
 	
 	@PutMapping("{id}")
 	@Transactional
-	public ResponseEntity<MedicoDtoListagemIndividual> atualizar(
+	public ResponseEntity<MedicoDtoDetalhamento> atualizarPorId(
 			@RequestBody 
 			@Valid
 			MedicoDtoAtualizacao medicoDtoAtualizacao,
 			@PathVariable 
 			Long id
 	) {
-		MedicoEntity medico = medicoService.atualizar(id, medicoDtoAtualizacao);
-		return ResponseEntity.ok().body(new MedicoDtoListagemIndividual(medico));
+		MedicoEntity medico = medicoService.atualizarPorId(id, medicoDtoAtualizacao);
+		return ResponseEntity.ok().body(new MedicoDtoDetalhamento(medico));
 	}
 	
 	@GetMapping
@@ -76,12 +80,12 @@ public class MedicoController {
 	}
 	
 	@GetMapping("{id}")
-	public ResponseEntity<MedicoDtoListagemIndividual> listarPorId(
+	public ResponseEntity<MedicoDtoDetalhamento> detalharPorId(
 			@PathVariable
 			Long id
 	) {
-		MedicoEntity medico = medicoService.listarPorId(id);
-		return ResponseEntity.ok(new MedicoDtoListagemIndividual(medico));
+		MedicoEntity medico = medicoService.detalharPorId(id);
+		return ResponseEntity.ok(new MedicoDtoDetalhamento(medico));
 	}
 
 }

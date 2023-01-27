@@ -1,6 +1,6 @@
-package br.com.vollmedapi.dto.medico;
+package br.com.vollmedapi.dtos.medico;
 
-import br.com.vollmedapi.dto.endereco.EnderecoDtoAtualizacao;
+import br.com.vollmedapi.dtos.endereco.EnderecoDtoAtualizacao;
 import jakarta.validation.Valid;
 
 public record MedicoDtoAtualizacao(

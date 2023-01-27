@@ -1,7 +1,7 @@
-package br.com.vollmedapi.dto.medico;
+package br.com.vollmedapi.dtos.medico;
 
-import br.com.vollmedapi.entities.MedicoEntity;
-import br.com.vollmedapi.enumarations.EspecialidadeEnumaration;
+import br.com.vollmedapi.domains.entities.MedicoEntity;
+import br.com.vollmedapi.domains.enumarations.EspecialidadeEnumaration;
 
 public record MedicoDtoListagem(
 		Long id,
